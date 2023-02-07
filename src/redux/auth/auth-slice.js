@@ -98,9 +98,7 @@ const auth = createSlice({
       store.isRefreshing = false;
     },
 
-    [refresh.rejected]: (store, { payload }) => {
-      store.loading = false;
-      store.error = payload;
+    [refresh.rejected]: (store, {payload}) => ({ ...initialState, store.error = payload }),
     },
 
     // * GET USER
