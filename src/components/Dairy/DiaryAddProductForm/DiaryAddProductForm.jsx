@@ -69,7 +69,7 @@ const DiaryAddProductForm = ({ setModalOpen }) => {
             render={({ field: { onChange, value } }) => (
               <TextFieldDefault
                 value={value}
-                placeholder={'Назва продукту (Свекла)'}
+                placeholder={'Назва продукту (Рис)'}
                 name={'query'}
                 control={control}
                 handleChange={onChange}

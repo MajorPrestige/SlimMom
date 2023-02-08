@@ -4,9 +4,14 @@ import { axiosGetUser } from 'api/user';
 
 export const register = createAsyncThunk(
   'auth/register',
-  async (userData, { rejectWithValue }) => {
+  async (userData, { rejectWithValue, dispatch }) => {
     try {
+      const {email, password} = userData;
       const data = await axiosRegister(userData);
+      dispatch(login({
+        email,
+        password
+      }))
       return data;
     } catch (error) {
       const { data, status } = error.response;

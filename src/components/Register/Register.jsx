@@ -1,5 +1,4 @@
 import { useState } from 'react';
-import { Navigate } from 'react-router-dom';
 import { useForm, Controller } from 'react-hook-form';
 import { register } from 'redux/auth/auth-opetations';
 import { useDispatch, useSelector } from 'react-redux';
@@ -17,7 +16,7 @@ import Modal from '../../components/Modal/Modal';
 import bcgDesktop from '../../images/desktop/bcgD.png';
 import bcgDesktop2x from '../../images/desktop/bcgD@2x.png';
 
-import { getErrorLogin, getNewUserId } from 'redux/auth/auth-selectors';
+import { getErrorLogin } from 'redux/auth/auth-selectors';
 
 const Register = () => {
   const isRetina = useMediaQuery({ query: '(min-resolution: 2dppx)' });
@@ -26,7 +25,6 @@ const Register = () => {
 
   const [modalOpen, setModalOpen] = useState(false);
   const errorLogin = useSelector(getErrorLogin);
-  const newUserId = useSelector(getNewUserId);
 
   const { control, handleSubmit, reset } = useForm({
     defaultValues: {
@@ -42,10 +40,6 @@ const Register = () => {
     setModalOpen(true);
     reset();
   };
-
-  if (!errorLogin && newUserId) {
-    return <Navigate to="/login" />;
-  }
 
   return (
     <section className={s.register}>
